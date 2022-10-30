@@ -7,6 +7,5 @@ export const useFetchCharacters = () => {
     RickAndMortyServices.getAllCharacters
   );
 
-  console.log(data);
   return data;
 };

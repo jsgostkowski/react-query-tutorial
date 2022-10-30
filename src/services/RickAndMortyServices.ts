@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { RickAndMortySingleCharacter } from "../types/RickAndMortySingleCharacter";
 
 import { RickAndMortyTypes } from "../types/RickAndMortyTypes";
 
@@ -13,4 +14,12 @@ export const getAllCharacters = async () => {
   return res.data;
 };
 
-export const RickAndMortyServices = { getAllCharacters };
+export const getSingleCharacters = async (id: string) => {
+  const res = await apiClient.get<RickAndMortySingleCharacter>(
+    `/character/${id}`
+  );
+  console.log(res);
+  return res.data;
+};
+
+export const RickAndMortyServices = { getAllCharacters, getSingleCharacters };
