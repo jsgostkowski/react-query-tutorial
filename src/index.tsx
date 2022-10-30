@@ -3,12 +3,29 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
 import {
   QueryCache,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { Character } from "./components/Character";
+import { CharacterDetail } from "./components/CharacterDetail";
+import { ErrorPage } from "./components/ErrorPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Character />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/character/:characterId",
+    element: <CharacterDetail />,
+    errorElement: <ErrorPage />,
+  },
+]);
 
 export const cache = new QueryCache();
 export const queryClient = new QueryClient({
@@ -28,7 +45,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>
 );
