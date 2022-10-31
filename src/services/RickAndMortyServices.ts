@@ -8,8 +8,10 @@ const apiClient = axios.create({
   baseURL: "https://rickandmortyapi.com/api",
 });
 
-export const getAllCharacters = async () => {
-  const res = await apiClient.get<RickAndMortyTypes>("/character");
+export const getAllCharacters = async (page: string) => {
+  const res = await apiClient.get<RickAndMortyTypes>(
+    `/character/?page=${page}`
+  );
 
   return res.data;
 };
@@ -18,7 +20,6 @@ export const getSingleCharacters = async (id: string) => {
   const res = await apiClient.get<RickAndMortySingleCharacter>(
     `/character/${id}`
   );
-  console.log(res);
   return res.data;
 };
 
