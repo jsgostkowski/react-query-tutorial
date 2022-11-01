@@ -46,11 +46,24 @@ export const Character = () => {
             </Link>
           </div>
         ))}
-        <div>
-          <button disabled={first === 1} onClick={handlePrexPage}>
+      </div>
+      <div className="flex flex-row justify-center bg-slate-500">
+        <div className="p-4">
+          <button
+            disabled={first === 1}
+            onClick={handlePrexPage}
+            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded pt-3 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             Prev
           </button>
-          <button onClick={handleNextPage}>Next</button>
+        </div>
+        <div className="p-4 ">
+          <button
+            onClick={handleNextPage}
+            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded pt-3 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Next
+          </button>
         </div>
       </div>
     </>
